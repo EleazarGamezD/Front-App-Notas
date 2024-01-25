@@ -1,0 +1,32 @@
+
+<mat-toolbar style="position: relative; z-index: 1100;">
+  <button mat-icon-button class="menu-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon"
+    aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container fxFlexFill style="position: relative;" fxFlexFill>
+  <mat-sidenav #sidenav style="z-index: 1000;">
+    <mat-nav-list>
+      <a (click)="sidenav.toggle()" href mat-list-item>Close</a>
+      <a href="#" mat-list-item>Menu Item 1</a>
+      <a href="#" mat-list-item>Menu Item 2</a>
+      <a href="#" mat-list-item>Menu Item 3</a>
+      <a href="#" mat-list-item>Menu Item 4</a>
+      <a href="#" mat-list-item>Menu Item 5</a>
+      <a href="#" mat-list-item>Menu Item 6</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
