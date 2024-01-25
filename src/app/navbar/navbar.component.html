@@ -17,16 +17,22 @@
   </button>
 </mat-toolbar>
 <mat-sidenav-container fxFlexFill style="position: relative;" fxFlexFill>
-  <mat-sidenav #sidenav style="z-index: 1000;">
-    <mat-nav-list>
+  <mat-sidenav #sidenav>
+    <mat-nav-list *ngIf="!isLoggedIn" class="nav-list">
+      <!-- Mostrar cuando el usuario no está logueado -->
+      <a mat-list-item (click)="navigateTo('/signup')">Registro</a>
+      <a mat-list-item (click)="navigateTo('/login')">Loguear</a>
+      <a mat-list-item (click)="sidenav.toggle()" href>Close</a>
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="isLoggedIn" class="nav-list">
+      <!-- Mostrar cuando el usuario está logueado -->
+      <a mat-list-item (click)="navigateTo('/opcion1')">Opción 1</a>
+      <a mat-list-item (click)="navigateTo('/opcion2')">Opción 2</a>
+      <a mat-list-item(click)="navigateTo('/opcion3')">Opción 3</a>
       <a (click)="sidenav.toggle()" href mat-list-item>Close</a>
-      <a href="#" mat-list-item>Menu Item 1</a>
-      <a href="#" mat-list-item>Menu Item 2</a>
-      <a href="#" mat-list-item>Menu Item 3</a>
-      <a href="#" mat-list-item>Menu Item 4</a>
-      <a href="#" mat-list-item>Menu Item 5</a>
-      <a href="#" mat-list-item>Menu Item 6</a>
     </mat-nav-list>
   </mat-sidenav>
   <router-outlet></router-outlet>
+
 </mat-sidenav-container>

@@ -1,0 +1,17 @@
+/* styles.css o tu archivo de estilos */
+
+.container-signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.mat-horizontal-stepper-header-container {
+  width: 100%;
+  /* Asegúrate de que el stepper ocupe el ancho completo */
+  max-width: 600px;
+  /* Ajusta el ancho máximo según sea necesario */
+  margin: 0 20px;
+  /* Ajusta los márgenes según sea necesario */
+}
