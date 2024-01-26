@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 55vh;
+  height: 75vh;
 }
 
 .cube {
@@ -26,4 +26,8 @@
 
 button {
   margin-top: 12px;
+}
+
+h2, p {
+  color: #000000;
 }
