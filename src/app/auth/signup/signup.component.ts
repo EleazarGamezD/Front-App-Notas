@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn,
 import Swal from 'sweetalert2';
 import { User } from '../interface/user.interface';
 import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class SignupComponent {
 
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService
   ) {
@@ -75,6 +77,7 @@ export class SignupComponent {
           title: 'Notificación',
           text: `Bienvenido ${userName}`,
         });
+        this.navigateTo('/allnote');
       },
       error => {
         Swal.fire({
@@ -85,5 +88,8 @@ export class SignupComponent {
         console.error('Error durante el registro:', error);
       }
     )
+  }
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
 }

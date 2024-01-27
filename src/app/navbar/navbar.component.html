@@ -21,16 +21,15 @@
     <mat-nav-list *ngIf="!isLoggedIn" class="nav-list">
       <!-- Mostrar cuando el usuario no está logueado -->
       <a mat-list-item (click)="navigateTo('/signup')">Registro</a>
-      <a mat-list-item (click)="navigateTo('/login')">Ingresar</a>
-      <a mat-list-item (click)="sidenav.toggle()" href>Close</a>
+      <a mat-list-item (click)="navigateTo('/login')">Iniciar Sesión</a>
+
     </mat-nav-list>
 
     <mat-nav-list *ngIf="isLoggedIn" class="nav-list">
       <!-- Mostrar cuando el usuario está logueado -->
-      <a mat-list-item (click)="navigateTo('/opcion1')">Opción 1</a>
-      <a mat-list-item (click)="navigateTo('/opcion2')">Opción 2</a>
-      <a mat-list-item(click)="navigateTo('/opcion3')">Opción 3</a>
-      <a (click)="sidenav.toggle()" href mat-list-item>Close</a>
+
+      <a mat-list-item (click)="logOut()">Cerrar Sesión</a>
+
     </mat-nav-list>
   </mat-sidenav>
   <router-outlet></router-outlet>

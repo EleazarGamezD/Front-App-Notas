@@ -22,6 +22,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NotesMenuComponent } from './notes/notes-menu/notes-menu.component';
+import { NotesHomeComponent } from './notes/notes-home/notes-home.component';
+import { NotesNewComponent } from './notes/notes-new/notes-new.component';
+import { NotesEditComponent } from './notes/notes-edit/notes-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     SignupComponent,
+    NotesMenuComponent,
+    NotesHomeComponent,
+    NotesNewComponent,
+    NotesEditComponent,
 
   ],
   imports: [

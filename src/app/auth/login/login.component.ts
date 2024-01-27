@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from '../service/auth.service';
-import { User } from '../interface/user.interface';
+
+import { StateService } from '../service/state.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,8 +18,10 @@ export class LoginComponent {
 
 
   constructor(
+    private router: Router,
+    private stateService: StateService,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     this.contactForm = this.formBuilder.group({
       email: [, [Validators.required, Validators.email]],
@@ -34,11 +39,13 @@ export class LoginComponent {
       success => {
         if (success) {
           const userName = localStorage.getItem('userName');
+          this.stateService.setIsLoggedIn(true);
           Swal.fire({
             icon: 'success',
             title: 'Notificación',
             text: `Bienvenido ${userName}`,
           });
+          this.navigateTo('/allnote');
           this.contactForm.reset();
         } else {
           Swal.fire({
@@ -56,5 +63,8 @@ export class LoginComponent {
 
       }
     );
+  }
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
 }

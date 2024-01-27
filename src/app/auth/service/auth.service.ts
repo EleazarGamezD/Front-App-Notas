@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 import { environment } from 'src/app/environments/environment.prod';
 import { User } from '../interface/user.interface';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,15 @@ export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
   private baseUrl: string = environment.baseUrl;
-  private authToken!: string;
+
+
 
 
   constructor(
+    private stateService: StateService,
     private http: HttpClient,
 
-  ) { this.isLoggedInSubject.next(this.isLoggedIn()) }
+  ) { }
 
 
   private isLoggedIn(): boolean {
@@ -40,7 +43,8 @@ export class AuthService {
 
         localStorage.setItem('token', resp.token);
         localStorage.setItem('userName', resp.user.userName);
-        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('email', resp.user.email);
+        this.stateService.setIsLoggedIn(true);
         console.log(resp);
 
         return resp.user; // Puedes devolver el objeto del usuario si es necesario
@@ -60,7 +64,8 @@ export class AuthService {
 
         localStorage.setItem('token', resp.token);
         localStorage.setItem('userName', resp.user.userName);
-        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('email', resp.user.email);
+        this.stateService.setIsLoggedIn(true);
 
         return true;  // Devuelve true solo si la solicitud es exitosa
       }),
@@ -71,7 +76,6 @@ export class AuthService {
   }
   logout() {
     localStorage.clear();
-    localStorage.setItem('isLoggedIn', 'false');
   }
 
 }
