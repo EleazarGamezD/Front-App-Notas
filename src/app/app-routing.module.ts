@@ -6,6 +6,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { NotesHomeComponent } from './notes/notes-home/notes-home.component';
 import { NotesNewComponent } from './notes/notes-new/notes-new.component';
 import { NotesEditComponent } from './notes/notes-edit/notes-edit.component';
+import { NotesMenuComponent } from './notes/notes-menu/notes-menu.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'allnote', component: NotesHomeComponent },
   { path: 'newnote', component: NotesNewComponent },
-  { path: 'editnote', component: NotesEditComponent }
+  { path: 'editnote', component: NotesEditComponent },
+  { path: 'menunote', component: NotesMenuComponent }
 ];
 
 @NgModule({

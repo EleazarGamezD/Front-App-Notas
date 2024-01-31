@@ -7,10 +7,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { NotesMenuComponent } from './notes/notes-menu/notes-menu.component';
+import { NotesHomeComponent } from './notes/notes-home/notes-home.component';
+import { NotesNewComponent } from './notes/notes-new/notes-new.component';
+import { NotesEditComponent } from './notes/notes-edit/notes-edit.component';
 
 
 
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -22,10 +27,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NotesMenuComponent } from './notes/notes-menu/notes-menu.component';
-import { NotesHomeComponent } from './notes/notes-home/notes-home.component';
-import { NotesNewComponent } from './notes/notes-new/notes-new.component';
-import { NotesEditComponent } from './notes/notes-edit/notes-edit.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +57,7 @@ import { NotesEditComponent } from './notes/notes-edit/notes-edit.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    FormsModule,
 
   ],
   providers: [{

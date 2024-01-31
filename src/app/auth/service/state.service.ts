@@ -7,19 +7,21 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class StateService {
-  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
-  constructor(private router: Router,) { }
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  constructor() { }
   getIsLoggedIn(): boolean {
     return this.isLoggedInSubject.value;
   }
 
-  setIsLoggedIn(value: boolean): void {
-    this.isLoggedInSubject.next(value);
+  setIsLoggedIn(isLoggedIn: boolean): void {
+    this.isLoggedInSubject.next(isLoggedIn);
+    localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
     console.log(this.isLoggedInSubject.value);
   }
 
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
+  getIsLoggedInFromLocalStorage(): boolean {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    return isLoggedIn ? JSON.parse(isLoggedIn) : false;
   }
 }

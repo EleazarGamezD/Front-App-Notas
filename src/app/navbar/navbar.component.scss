@@ -1,0 +1,121 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-sidenav {
+  width: 250px;
+}
+
+.nav-list {
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+
+
+header {
+  position: fixed;
+  top: 0;
+  z-index: 11;
+  transition: all 900ms ease-in-out;
+}
+
+.main-header {
+  @extend header;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.search-block {
+  width: 0%;
+  right: 0;
+  @extend header;
+  background: #fff;
+
+  &.active {
+    width: 100%;
+  }
+
+  .search-control {
+    flex: 1;
+    font-size: 1rem;
+    border: 0;
+    outline: none;
+    padding-left: 10px;
+  }
+}
+
+
+/* user card */
+
+.card {
+  margin-top: 200px;
+  width: 200px;
+  height: 250px;
+  background: #07182E;
+  border-radius: 5px;
+  text-align: center;
+  color: #f0f0f0;
+  overflow: hidden;
+  font-family: inherit;
+  z-index: 1;
+}
+
+.img {
+  display: flex;
+  margin: 60px auto 10px auto;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #f0f0f0;
+  border-radius: 50%;
+  font-size: 11px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  z-index: 99;
+  background-color: #152f50;
+}
+
+p {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.heading {
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+svg {
+  padding: 0 5px;
+
+}
+
+.card:hover .img {
+  transform: scale(1.1);
+
+}
+
+.card:hover .svg {
+  transform: rotate(90);
+}
+
+#mySvg {
+
+  transition: transform 0.3s ease;
+}
+
+.card:hover #mySvg {
+  transition: 1seg;
+  transform: rotate(-25deg);
+}
+
+.card:hover h1,
+.card:hover p {
+  opacity: 1;
+}
