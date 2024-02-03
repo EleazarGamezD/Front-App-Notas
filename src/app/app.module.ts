@@ -7,7 +7,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { NotesMenuComponent } from './notes/notes-menu/notes-menu.component';
 import { NotesHomeComponent } from './notes/notes-home/notes-home.component';
 import { NotesNewComponent } from './notes/notes-new/notes-new.component';
 import { NotesEditComponent } from './notes/notes-edit/notes-edit.component';
@@ -37,7 +36,6 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    NotesMenuComponent,
     NotesHomeComponent,
     NotesNewComponent,
     NotesEditComponent,
