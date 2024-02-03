@@ -1,30 +1,37 @@
 <div class="card-container">
   <!-- Note Cards -->
-  <div class="card" *ngFor="let note of notes; let i = index">
-    <div class="date-time-container">
-      <time class="date-time">
-        <span>{{ note.year }}</span>
-        <span class="separator"></span>
-        <span>{{ note.month }}</span>
-      </time>
-    </div>
-    <div class="content">
-      <div class="infos">
-        <a href="#">
-          <span class="title">
-            {{ note.title }}
-          </span>
-        </a>
-        <p class="description">
-          {{ note.content }}
-        </p>
+  <div class="tarjeta" *ngFor="let note of notes; let i = index">
+    <div class="card">
+      <div class="date-time-container">
+        <time class="date-time">
+          <span>{{ note.year }}</span>
+          <span class="separator"></span>
+          <span>{{ note.month }}</span>
+        </time>
       </div>
-      <a class="action">
-        {{ note.category }}
-      </a>
+      <div class="content">
+        <div class="infos">
+          <a href="#">
+            <span class="title">
+              {{ note.title }}
+            </span>
+          </a>
+          <p class="description">
+            {{ note.content }}
+          </p>
+        </div>
+        <a class="action">
+          {{ note.category }}
+        </a>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="editar">Editar</button>
+      <button class="archivar">Archivar</button>
+      <app-notes-menu></app-notes-menu>
     </div>
   </div>
 </div>
-<br>
+
 <!-- <app-notes-menu></app-notes-menu>
  -->

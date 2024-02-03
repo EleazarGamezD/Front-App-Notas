@@ -91,3 +91,51 @@
 .action:hover {
   background-color: rgba(250, 204, 21, 1);
 }
+
+/* zona menu desplegable tarjetas */
+.tarjeta {
+  position: relative;
+  width: 200px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: -120px;
+  /* Inicialmente fuera de la tarjeta */
+  width: 100px;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 0;
+  /* Inicialmente invisible */
+  transition: right 0.3s ease, opacity 0.3s ease;
+}
+
+.tarjeta:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta:hover .menu {
+  right: 0;
+  opacity: 1;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}

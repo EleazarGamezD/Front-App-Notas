@@ -39,7 +39,7 @@ export class NotesHomeComponent implements OnInit {
             return note;
           }
         });
-        console.log(this.notes);
+
       });
   }
 

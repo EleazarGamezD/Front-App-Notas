@@ -25,7 +25,6 @@ export class NavbarComponent implements OnInit {
     this.stateService.isLoggedIn$.subscribe((isLoggedIn: boolean) => {
       this.isLoggedIn = isLoggedIn;
       this.checkUser()
-      console.log(isLoggedIn)
     });
   }
   checkUser() {
