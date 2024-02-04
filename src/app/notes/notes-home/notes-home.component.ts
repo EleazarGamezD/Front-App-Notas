@@ -12,6 +12,7 @@ export class NotesHomeComponent implements OnInit {
   notes: Note[] = [];
   year: string = '';
   month: string = '';
+  filterActive: boolean = true;
   constructor(private notesService: NotesService,
     private router: Router,) { }
   ngOnInit(): void {
@@ -20,8 +21,8 @@ export class NotesHomeComponent implements OnInit {
   getNotes() {
     this.notesService.getAllNote()
       .subscribe((data: any) => {
-        this.notes = data.map((note: any) => {
-
+        this.notes = data.map((note: Note) => {
+          console.log(note)
           if (note.createDate) {
             const dateParts = note.createDate.split('T')[0].split('-');
             const year = dateParts[0];
@@ -32,15 +33,20 @@ export class NotesHomeComponent implements OnInit {
               ...note,
               year: `${year}`,
               month: `${month}/${day}`,
-              formattedDate: `${year}-${month}-${day}`
+              formattedDate: `${year}-${month}-${day}`,
+
             };
           } else {
-            console.log(note)
             return note;
           }
         });
 
       });
   }
+
+  filterNotes(active: boolean) {
+    this.filterActive = active;
+  }
+
 
 }

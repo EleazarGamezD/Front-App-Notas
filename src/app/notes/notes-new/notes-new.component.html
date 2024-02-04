@@ -1,1 +1,39 @@
-<p>notes-new works!</p>
+<div class="principal-menu">
+  <button>Volver</button>
+</div>
+<div class="notes-new-container">
+  <div class="card" [style.height]="cardHeight">
+    <div class="date-time-container">
+      <time class="date-time" datetime="2022-10-10">
+        <span>{{year}}</span>
+        <span class="separator"></span>
+        <span>{{mouth}} / {{day}}</span>
+      </time>
+    </div>
+    <div class="content">
+      <div class="infos">
+        <mat-form-field class="title">
+          <textarea matInput placeholder="Titulo"
+            (input)="autoResize($event, 'title')" #titleTextarea
+            rows="1"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="description">
+          <textarea matInput placeholder="Descripción"
+            (input)="autoResize($event, 'description')" #descriptionTextarea
+            rows="7"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="category">
+          <textarea matInput placeholder="Categoría"
+            (input)="autoResize($event, 'category')" #categoryTextarea
+            rows="1"></textarea>
+        </mat-form-field>
+      </div>
+
+      <a class="action">
+        Crear Nota
+      </a>
+    </div>
+  </div>
+</div>

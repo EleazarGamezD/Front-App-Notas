@@ -1,37 +1,44 @@
-<div class="card-container">
-  <!-- Note Cards -->
-  <div class="tarjeta" *ngFor="let note of notes; let i = index">
-    <div class="card">
-      <div class="date-time-container">
-        <time class="date-time">
-          <span>{{ note.year }}</span>
-          <span class="separator"></span>
-          <span>{{ note.month }}</span>
-        </time>
-      </div>
-      <div class="content">
-        <div class="infos">
-          <a href="#">
-            <span class="title">
-              {{ note.title }}
-            </span>
-          </a>
-          <p class="description">
-            {{ note.content }}
-          </p>
+
+<div>
+  <div class="card-container">
+    <div class="principal-menu">
+      <button (click)="filterNotes(true)">Crear Nota</button>
+      <button (click)="filterNotes(true)">Mostrar Activas</button>
+      <button (click)="filterNotes(false)">Mostrar Archivadas</button>
+    </div>
+
+    <!-- Note Cards Active Notes -->
+
+    <div class="tarjeta" *ngFor="let note of notes; let i = index">
+      <div class="card" *ngIf="note.isActive === filterActive">
+        <div class="date-time-container">
+          <time class="date-time">
+            <span>{{ note.year }}</span>
+            <span class="separator"></span>
+            <span>{{ note.month }}</span>
+          </time>
         </div>
-        <a class="action">
-          {{ note.category }}
-        </a>
+        <div class="conten t">
+          <div class="infos">
+            <a>
+              <span class="title">
+                {{ note.title }}
+              </span>
+            </a>
+            <p class="description">
+              {{ note.content }}
+            </p>
+          </div>
+          <a class="action">
+            {{ note.category }}
+          </a>
+        </div>
+      </div>
+      <div class="menu">
+        <button class="editar">Editar</button>
+        <button class="archivar">Archivar</button>
+
       </div>
     </div>
-    <div class="menu">
-      <button class="editar">Editar</button>
-      <button class="archivar">Archivar</button>
 
-    </div>
   </div>
-</div>
-
-<!-- <app-notes-menu></app-notes-menu>
- -->

@@ -1,3 +1,8 @@
+.principal-menu {
+  margin-top: 55px;
+  width: 100%;
+}
+
 .card {
   box-sizing: border-box;
   display: flex;

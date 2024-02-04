@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'allnote', component: NotesHomeComponent },
-  { path: 'newnote', component: NotesNewComponent },
-  { path: 'editnote', component: NotesEditComponent }
+  { path: 'new-note', component: NotesNewComponent },
+  { path: 'edi-tnote', component: NotesEditComponent }
 ];
 
 @NgModule({
