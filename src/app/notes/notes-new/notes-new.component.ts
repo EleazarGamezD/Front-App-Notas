@@ -7,7 +7,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class NotesNewComponent {
   year: number;
-  mouth: string = '';
+  month: string = '';
   day: string = '';
   cardHeight: string = 'auto';   // establecemos la altura de la tarjeta
   @ViewChild('titleTextarea')
@@ -18,10 +18,11 @@ export class NotesNewComponent {
   categoryTextarea!: ElementRef;  //leemos el elemneto category
   constructor() {
     this.year = new Date().getFullYear(),
-      this.mouth = new Date().getMonth().toString(),
-      this.day = new Date().getDate().toString()
+      this.month = (new Date().getMonth() + 1).toString().padStart(2, '0');
+    this.day = new Date().getDate().toString()
   }
 
+  // seccion para autoajuste de la tarjeta segun el texarea
   autoResize(event: Event, textareaType: string): void {
     const textarea = event.target as HTMLTextAreaElement;
     // Establece la altura del textarea según su contenido

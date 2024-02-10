@@ -1,6 +1,21 @@
 .principal-menu {
   margin-top: 55px;
+  width: 90%;
+}
+
+.menu-container {
+  display: flex;
+  position: fixed;
   width: 100%;
+  justify-content: center;
+  z-index: 100;
+  margin-top: 3%;
+}
+
+.spacer {
+  margin-top: 3%;
+  height: 5%;
+
 }
 
 .card {
@@ -16,6 +31,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-top: 300px;
   /* Espacio entre las tarjetas */
 }
 
@@ -108,12 +124,12 @@
   transition: box-shadow 0.3s ease;
 }
 
-.menu {
+.hidden-menu {
   position: absolute;
   top: 20px;
   right: -120px;
   /* Inicialmente fuera de la tarjeta */
-  width: 100px;
+  width: 150px;
   background-color: #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -127,12 +143,12 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.tarjeta:hover .menu {
+.tarjeta:hover .hidden-menu {
   right: 0;
   opacity: 1;
 }
 
-button {
+.hidden-button {
   width: 100%;
   padding: 10px;
   border: none;
@@ -141,6 +157,190 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.hidden-button:hover {
   background-color: #e0e0e0;
+}
+
+/* Menu Inicial */
+.menu-principal {
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 11px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.results hr {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background-color: #ECECEC;
+}
+
+.results p {
+  padding: 0 20px;
+}
+
+p.label {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: #5F6368;
+}
+
+.results .entry {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  gap: 12px;
+  padding: 5px 20px;
+  transition: all 0.2s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.results .entry:hover {
+  background-color: #F5F8FE;
+}
+
+.results .results-list .entry:hover .icon {
+  background-color: #1763fa;
+}
+
+.results .results-list .entry:hover .icon svg path,
+.results .results-list .entry:hover .icon svg circle {
+  stroke: #ffffff;
+}
+
+.results .results-list .entry:hover label {
+  color: #1763fa;
+}
+
+.results .results-list .entry:hover span {
+  color: #7ba0eb;
+}
+
+.results .results-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.results .entry .icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ECECEC;
+  border-radius: 7px;
+  transition: all 0.2s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.results .entry .desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.results .entry .desc label {
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #171718;
+}
+
+.results .entry .desc span {
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+  color: #72767c;
+}
+
+
+/* loading animation  1*/
+
+.loader {
+  position: relative;
+  width: 250px;
+  height: 130px;
+  margin-bottom: 10px;
+  border: 1px solid #d3d3d3;
+  padding: 25px;
+  background-color: #e3e3e3;
+  overflow: hidden;
+}
+
+.loader:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(110deg, rgba(227, 227, 227, 0) 0%, rgba(227, 227, 227, 0) 40%, rgba(227, 227, 227, 0.5) 50%, rgba(227, 227, 227, 0) 60%, rgba(227, 227, 227, 0) 100%);
+  animation: gradient-animation_2 1.2s linear infinite;
+}
+
+.loader .wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.loader .wrapper>div {
+  background-color: #cacaca;
+}
+
+
+.loader .button {
+  display: inline-block;
+  height: 32px;
+  width: 75px;
+}
+
+.loader .line-1 {
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  height: 10px;
+  width: 100%;
+}
+
+.loader .line-2 {
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  height: 10px;
+  width: 100%;
+}
+
+.loader .line-3 {
+  position: absolute;
+  top: 67px;
+  left: 0px;
+  height: 10px;
+  width: 100%;
+}
+
+.loader .line-4 {
+  position: absolute;
+  top: 93px;
+  left: 0px;
+  height: 10px;
+  width: 92%;
+}
+
+@keyframes gradient-animation_2 {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }

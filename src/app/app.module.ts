@@ -23,6 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -53,6 +54,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatStepperModule,
     MatFormFieldModule,
+    MatProgressBarModule,
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
