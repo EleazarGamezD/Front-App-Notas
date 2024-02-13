@@ -55,19 +55,20 @@ header {
 .card {
   margin-top: 200px;
   width: 200px;
-  height: 250px;
+  height: 220px;
   background: #07182E;
   border-radius: 5px;
   text-align: center;
   color: #f0f0f0;
   overflow: hidden;
   font-family: inherit;
-  z-index: 1;
+  margin-left: 25px;
+
 }
 
 .img {
   display: flex;
-  margin: 60px auto 10px auto;
+  margin: 30px auto 30px auto;
   width: 75px;
   height: 75px;
   border: 1px solid #f0f0f0;
@@ -88,7 +89,7 @@ p {
 .heading {
   padding: 10px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 13px;
 }
 
 svg {

@@ -25,9 +25,8 @@ export class NotesService {
     });
     return this.http.get<Note>(url, { headers }).pipe(
       catchError((error) => {
-
         localStorage.clear();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         return throwError("Su sesión ha expirado, por favor inicie sesión de nuevo");
       })
     );
