@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Note } from '../interface/note.interface';
 import { NotesService } from '../service/notes.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-notes-home',
@@ -81,13 +82,52 @@ export class NotesHomeComponent implements OnInit {
       });
   }
 
+  confirmDelete(noteId: any, noteTitle: string | undefined) {
+    const userName = localStorage.getItem('userName')
+    Swal.fire({
 
+      title: `¿Estás seguro? ${userName}`,
+      text: `Estas a punto de eliminar la nota: ${noteTitle}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Lógica para eliminar la nota (llama a la función correspondiente)
+        /* this.notesService.deleteNoteById(noteId) */
+        this.deleteNote(noteId);
+        this.getNotes()
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // No haces nada si el usuario cancela
+        console.log('Eliminación cancelada');
+      }
+    });
+  }
+
+  deleteNote(noteId: string): void {
+    this.notesService.deleteNoteById(noteId).subscribe(
+      result => {
+        console.log('Eliminación exitosa', result);
+        Swal.fire({
+          icon: 'success',
+          title: 'Notificación',
+          text: `nota Eliminada con Éxito`,
+        });
+      },
+      error => {
+        console.error('Error al eliminar la nota', error);
+
+      }
+    );
+  }
   simulateAsyncLoad() {
     setTimeout(() => {
       console.log('esperando 3 segundos...');
       this.isLoading = false;
 
-    }, 5000); // Simulate a delay of 3 seconds
+    }, 3000); // Simulate a delay of 3 seconds
   }
   toggleNoteIsActiveToFalse(active: boolean) {
     this.filterActive = false;

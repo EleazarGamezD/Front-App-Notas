@@ -121,7 +121,6 @@
                       stroke-linejoin="round" />
                   </svg>
                 </div>
-
                 <div class="desc">
                   <label>Editar </label>
                 </div>
@@ -158,7 +157,7 @@
             </div>
           </div>
           <hr>
-          <div class="results">
+          <div class="results" (click)="confirmDelete(note.id, note.title)">
             <div class="results-list">
               <div class="entry">
                 <div class="icon">

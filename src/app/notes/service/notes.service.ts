@@ -31,4 +31,17 @@ export class NotesService {
       })
     );
   }
+
+  deleteNoteById(noteId: string): Observable<string> {
+    console.log(noteId)
+    const url = `${this.baseUrl}note/delete/` + noteId;
+    console.log(url)
+    const signedToken = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${signedToken}` });
+    return this.http.delete(url, { headers, responseType: 'text' }).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
 }
