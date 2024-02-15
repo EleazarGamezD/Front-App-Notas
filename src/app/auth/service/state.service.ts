@@ -17,7 +17,6 @@ export class StateService {
   setIsLoggedIn(isLoggedIn: boolean): void {
     this.isLoggedInSubject.next(isLoggedIn);
     localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
-    console.log(this.isLoggedInSubject.value);
   }
 
   getIsLoggedInFromLocalStorage(): boolean {

@@ -1,8 +1,8 @@
 <div class="container-login">
   <form class="form">
     <p class="form-title">Inicio de Sesión</p>
-    <form id="contactForm" name="contactForm" class="contactForm"
-      [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <form id="loginForm" name="loginForm" class="contactForm"
+      [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="input-container">
         <input placeholder="Ingresa tu Email" type="email"
           formControlName="email">
@@ -31,7 +31,7 @@
           </svg>
         </span>
       </div>
-      <button class="submit" type="submit" [disabled]="contactForm.invalid">
+      <button class="submit" type="submit" [disabled]="loginForm.invalid">
         INICIAR SESIÓN
       </button>
     </form>

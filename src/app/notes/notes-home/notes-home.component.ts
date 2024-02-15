@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Note } from '../interface/note.interface';
 import { NotesService } from '../service/notes.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./notes-home.component.css']
 })
 export class NotesHomeComponent implements OnInit {
-  @Input() notes: Note[] = [];
+  notes: Note[] = [];
   notesActive: Note[] = [];
   notesArchived: Note[] = [];
   year: string = '';
@@ -19,15 +19,19 @@ export class NotesHomeComponent implements OnInit {
   isLoading: boolean = true;
   noActiveNotes: boolean = false;
   noInactiveNotes: boolean = false;
-
+  cardHeight: string = 'auto';   // establecemos la altura de la tarjeta
+  @ViewChild('titleTextarea')
+  titleTextarea!: ElementRef; //leemos el elemneto title
+  @ViewChild('descriptionTextarea')
+  descriptionTextarea!: ElementRef; //leemos el elemneto description
+  @ViewChild('categoryTextarea')
+  categoryTextarea!: ElementRef;
 
   constructor(private notesService: NotesService,
     private router: Router,) { }
   ngOnInit(): void {
     this.simulateAsyncLoad();
     this.getNotes()
-
-
   }
   getNotes() {
     this.notesService.getAllNote()
@@ -85,7 +89,6 @@ export class NotesHomeComponent implements OnInit {
   confirmDelete(noteId: any, noteTitle: string | undefined) {
     const userName = localStorage.getItem('userName')
     Swal.fire({
-
       title: `¿Estás seguro? ${userName}`,
       text: `Estas a punto de eliminar la nota: ${noteTitle}`,
       icon: 'warning',
@@ -95,10 +98,8 @@ export class NotesHomeComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        // Lógica para eliminar la nota (llama a la función correspondiente)
-        /* this.notesService.deleteNoteById(noteId) */
         this.deleteNote(noteId);
-        this.getNotes()
+
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         // No haces nada si el usuario cancela
         console.log('Eliminación cancelada');
@@ -106,7 +107,7 @@ export class NotesHomeComponent implements OnInit {
     });
   }
 
-  deleteNote(noteId: string): void {
+  deleteNote(noteId: string,): void {
     this.notesService.deleteNoteById(noteId).subscribe(
       result => {
         console.log('Eliminación exitosa', result);
@@ -115,6 +116,7 @@ export class NotesHomeComponent implements OnInit {
           title: 'Notificación',
           text: `nota Eliminada con Éxito`,
         });
+        this.getNotes();
       },
       error => {
         console.error('Error al eliminar la nota', error);
@@ -122,6 +124,37 @@ export class NotesHomeComponent implements OnInit {
       }
     );
   }
+
+  archiveBtnFunction(note: Note) {
+
+    const noteTitle = note.title
+    const noteId = note.id
+    if (note.isActive === true) {
+      note.isActive = false
+      this.notesService.archiveNoteById(noteId, note).subscribe(result => {
+        console.log('Nota Archivada con exito', result);
+        Swal.fire({
+          icon: 'success',
+          title: `Notificación`,
+          text: `nota ${noteTitle} Archivada con Éxito`,
+        });
+        this.getNotes()
+      })
+
+    } else {
+      note.isActive = true
+      this.notesService.archiveNoteById(noteId, note).subscribe(result => {
+        console.log('Nota Activada con exito', result);
+        Swal.fire({
+          icon: 'success',
+          title: 'Notificación',
+          text: `Nota ${noteTitle}Activada con Éxito`,
+        });
+        this.getNotes()
+      })
+    }
+  }
+
   simulateAsyncLoad() {
     setTimeout(() => {
       console.log('esperando 3 segundos...');
@@ -146,6 +179,24 @@ export class NotesHomeComponent implements OnInit {
   // Lógica para determinar si hay notas archivadas
   hasArchivedNotes(): boolean {
     return this.notes.some(note => !note.isActive);
+  }
+
+
+  autoResize(event: Event, textareaType: string): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    // Establece la altura del textarea según su contenido
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+    // Calcula la altura total de la tarjeta
+    const titleHeight = this.titleTextarea.nativeElement.scrollHeight;
+    const descriptionHeight = this.descriptionTextarea.nativeElement.scrollHeight;
+    const categoryHeight = this.categoryTextarea.nativeElement.scrollHeight;
+    // Ajusta la altura de la tarjeta según el contenido de los textarea
+    this.cardHeight = `${titleHeight + descriptionHeight + categoryHeight + 200}px`;
+  }
+
+  newNote() {
+    this.router.navigate(['new-note']);
   }
 
 }

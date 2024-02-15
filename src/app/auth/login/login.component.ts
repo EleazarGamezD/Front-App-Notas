@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  contactForm: FormGroup;
+  loginForm: FormGroup;
 
 
 
@@ -23,7 +23,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authService: AuthService,
   ) {
-    this.contactForm = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       email: [, [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(8)]],
     });
@@ -32,8 +32,8 @@ export class LoginComponent {
   onSubmit() {
     this.authService.logout()
     const userData = {
-      email: this.contactForm.get('email')?.value,
-      password: this.contactForm.get('password')?.value
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value
     };
     this.authService.login(userData).subscribe(
       success => {
@@ -46,7 +46,7 @@ export class LoginComponent {
             text: `Bienvenido ${userName}`,
           });
           this.navigateTo('/allnote');
-          this.contactForm.reset();
+          this.loginForm.reset();
         } else {
           Swal.fire({
             icon: 'error',
