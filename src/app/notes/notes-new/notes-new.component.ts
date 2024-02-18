@@ -45,21 +45,21 @@ export class NotesNewComponent implements OnInit {
   }
 
   createNote() {
-    console.log('Formulario válido:', this.noteForm.valid);
-    console.log('Datos del formulario:', this.noteForm.value)
     if (this.noteForm.valid) {
-
-      console.log(this.noteForm.value);
       const formData = this.noteForm.value;
       this.notesService.newNote(formData).subscribe(
         response => {
           console.log('Server response:', response);
-          this.noteForm.reset();
           Swal.fire({
             icon: 'success',
             title: 'notification',
             text: `Nota ${formData.title} creada con exito, Gracias!`,
           });
+          //redirigir
+          setTimeout(() => {
+            this.goBack()
+          }, 2000)
+
         },
         error => {
           console.error('Error creando la nota:', error);

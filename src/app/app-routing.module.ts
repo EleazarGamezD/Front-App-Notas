@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'allnote', component: NotesHomeComponent },
   { path: 'new-note', component: NotesNewComponent },
-  { path: 'edit-note', component: NotesEditComponent }
+  { path: 'editnote/:id', component: NotesEditComponent }
 ];
 
 @NgModule({

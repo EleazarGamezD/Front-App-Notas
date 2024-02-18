@@ -51,6 +51,18 @@ export class NotesService {
       })
     );
   }
+  getNoteById(noteId: string): Observable<Note> {
+    console.log(noteId)
+    const url = `${this.baseUrl}note/getnote/` + noteId;
+    console.log(url)
+    const signedToken = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${signedToken}` });
+    return this.http.get<Note>(url, { headers }).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
 
 
   deleteNoteById(noteId: string): Observable<string> {
@@ -66,7 +78,7 @@ export class NotesService {
     );
   }
 
-  archiveNoteById(noteId: any, note: Note) {
+  editNoteById(noteId: any, note: Note) {
     const url = `${this.baseUrl}note/update/` + noteId;
     const signedToken = localStorage.getItem('token');
     let results: Observable<any>;

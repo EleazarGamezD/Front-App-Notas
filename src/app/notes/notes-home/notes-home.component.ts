@@ -131,7 +131,7 @@ export class NotesHomeComponent implements OnInit {
     const noteId = note.id
     if (note.isActive === true) {
       note.isActive = false
-      this.notesService.archiveNoteById(noteId, note).subscribe(result => {
+      this.notesService.editNoteById(noteId, note).subscribe(result => {
         console.log('Nota Archivada con exito', result);
         Swal.fire({
           icon: 'success',
@@ -143,7 +143,7 @@ export class NotesHomeComponent implements OnInit {
 
     } else {
       note.isActive = true
-      this.notesService.archiveNoteById(noteId, note).subscribe(result => {
+      this.notesService.editNoteById(noteId, note).subscribe(result => {
         console.log('Nota Activada con exito', result);
         Swal.fire({
           icon: 'success',
@@ -198,5 +198,8 @@ export class NotesHomeComponent implements OnInit {
   newNote() {
     this.router.navigate(['new-note']);
   }
-
+  editBtnFunction(id: any) {
+    console.log(id)
+    this.router.navigate(['editnote', id])
+  }
 }
