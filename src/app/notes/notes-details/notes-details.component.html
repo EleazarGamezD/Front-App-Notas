@@ -1,0 +1,59 @@
+<!-- <mat-dialog-actions class="mat-dialog-actions-right">
+  <button mat-icon-button
+    (click)="onClose()"><mat-icon>X</mat-icon></button>
+</mat-dialog-actions>
+ -->
+<mat-dialog-content>
+  <div class="card-container">
+    <ng-container *ngIf="!isLoading; else loadingTemplate">
+      <!-- Note Cards  -->
+      <ng-container>
+        <div class="tarjeta">
+          <div class="card">
+            <div class="date-time-container">
+              <time class="date-time">
+                <span>{{note.createDate| date}}</span>
+                <span class="separator"></span>
+                <span>Fecha de Creación</span>
+              </time>
+            </div>
+
+            <div class="content">
+              <div class="infos">
+                <a>
+                  <span class="title">
+                    {{ note.title }}
+                  </span>
+                </a>
+                <p class="description">
+                  {{ note.content}}
+                </p>
+              </div>
+              <a class="action">
+                {{ note.category }}
+              </a>
+            </div>
+            <div *ngIf="note.updateDate" class="date-time-container">
+              <time class="date-time">
+                <span>{{note.updateDate| date}}</span>
+                <span class="separator"></span>
+                <span>Fecha de Actualización</span>
+              </time>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</mat-dialog-content>
+
+<ng-template #loadingTemplate>
+  <div class="loader">
+    <div class="wrapper">
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+      <div class="line-3"></div>
+      <div class="line-4"></div>
+    </div>
+  </div>
+</ng-template>

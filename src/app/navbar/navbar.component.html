@@ -13,8 +13,8 @@
         <div class="mat-subheading-2" style="line-height:.6rem;">Ordena Tus
           notas</div>
       </div>
-      <button mat-icon-button (click)="openSearch()">
-        <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none"
+      <!-- <button mat-icon-button (click)="openSearch()">
+        <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none"
           xmlns="http://www.w3.org/2000/svg">
           <path
             id="Vector"
@@ -22,7 +22,7 @@
             stroke="#ffffff" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
         </svg>
-      </button>
+      </button> -->
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -31,7 +31,6 @@
     <mat-toolbar-row style="padding: 0 5px;">
       <button class="search-icon" mat-icon-button disabled>
         <mat-icon>search</mat-icon>
-
       </button>
       <input class="search-control" type="text" placeholder="Search"
         [(ngModel)]="searchText" #searchbar>
@@ -44,7 +43,6 @@
   <mat-sidenav-container fxFlexFill style="position: relative;" fxFlexFill>
 
     <mat-sidenav #sidenav>
-
       <mat-nav-list *ngIf="!isLoggedIn" class="nav-list">
         <!-- Mostrar cuando el usuario no está logueado -->
         <div class="card">

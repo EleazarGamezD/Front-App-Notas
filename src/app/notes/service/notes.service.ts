@@ -52,9 +52,7 @@ export class NotesService {
     );
   }
   getNoteById(noteId: string): Observable<Note> {
-    console.log(noteId)
     const url = `${this.baseUrl}note/getnote/` + noteId;
-    console.log(url)
     const signedToken = localStorage.getItem('token');
     const headers = new HttpHeaders({ Authorization: `Bearer ${signedToken}` });
     return this.http.get<Note>(url, { headers }).pipe(

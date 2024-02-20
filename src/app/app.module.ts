@@ -29,6 +29,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { NotesDetailsComponent } from './notes/notes-details/notes-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -42,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     NotesHomeComponent,
     NotesNewComponent,
     NotesEditComponent,
+    NotesDetailsComponent,
 
   ],
   imports: [
@@ -61,7 +64,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     MatSelectModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule,
 
 
   ],

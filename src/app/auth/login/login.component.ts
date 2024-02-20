@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
+  showPassword: boolean = false;
 
 
 
@@ -28,6 +28,9 @@ export class LoginComponent {
       password: ["", [Validators.required, Validators.minLength(8)]],
     });
 
+  }
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
   onSubmit() {
     this.authService.logout()

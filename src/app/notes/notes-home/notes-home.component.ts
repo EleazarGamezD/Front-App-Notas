@@ -3,6 +3,8 @@ import { Note } from '../interface/note.interface';
 import { NotesService } from '../service/notes.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { NotesDetailsComponent } from '../notes-details/notes-details.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-notes-home',
@@ -28,6 +30,7 @@ export class NotesHomeComponent implements OnInit {
   categoryTextarea!: ElementRef;
 
   constructor(private notesService: NotesService,
+    private dialog: MatDialog,
     private router: Router,) { }
   ngOnInit(): void {
     this.simulateAsyncLoad();
@@ -116,7 +119,8 @@ export class NotesHomeComponent implements OnInit {
           title: 'Notificación',
           text: `nota Eliminada con Éxito`,
         });
-        this.getNotes();
+        this.ngOnInit()
+        this.getNotes()
       },
       error => {
         console.error('Error al eliminar la nota', error);
@@ -160,7 +164,7 @@ export class NotesHomeComponent implements OnInit {
       console.log('esperando 3 segundos...');
       this.isLoading = false;
 
-    }, 3000); // Simulate a delay of 3 seconds
+    }, 2000);
   }
   toggleNoteIsActiveToFalse(active: boolean) {
     this.filterActive = false;
@@ -181,7 +185,13 @@ export class NotesHomeComponent implements OnInit {
     return this.notes.some(note => !note.isActive);
   }
 
-
+  openNoteDetails(id: any) {
+    const dialogRef = this.dialog.open(NotesDetailsComponent, {
+      data: {
+        noteId: id
+      }
+    })
+  }
   autoResize(event: Event, textareaType: string): void {
     const textarea = event.target as HTMLTextAreaElement;
     // Establece la altura del textarea según su contenido

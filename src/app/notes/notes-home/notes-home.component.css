@@ -22,6 +22,7 @@
   box-sizing: border-box;
   display: flex;
   max-width: 320px;
+  min-height: 270px;
   background-color: rgba(255, 255, 255, 1);
   transition: all .15s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -88,7 +89,7 @@
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 7;
   line-clamp: 5;
   margin-top: 0.5rem;
   font-size: 0.875rem;
