@@ -45,63 +45,65 @@
   </div>
 </div>
 <div class="spacer"></div>
-<div class="notes-new-container">
-  <form class="card" [style.height]="cardHeight" name="noteForm" id="noteForm"
-    [formGroup]="noteForm"
-    (ngSubmit)="createNote()">
-    <div class="date-time-container">
-      <time class="date-time">
-        <span>{{year}}</span>
-        <span class="separator"></span>
-        <span>{{month}} / {{day}}</span>
-      </time>
-    </div>
-    <div class="content">
-      <div class="infos">
-        <mat-form-field class="title">
-          <mat-label>Titulo</mat-label>
-          <textarea matInput placeholder="Titulo"
-            (input)="autoResize($event, 'title') "
-            #titleTextarea
-            rows="1" formControlName="title"></textarea>
-        </mat-form-field>
-
-        <mat-form-field class="description">
-          <mat-label>Contenido</mat-label>
-          <textarea matInput placeholder="Contenido de la nota"
-            (input)="autoResize($event, 'description')" #descriptionTextarea
-            rows="7" formControlName="content"></textarea>
-        </mat-form-field>
-
-        <mat-form-field class="category">
-          <mat-label>Categoria</mat-label>
-          <textarea matInput placeholder="Categoría"
-            (input)="autoResize($event, 'category')"
-            #categoryTextarea
-            rows="1"
-            formControlName="category"
-            [matAutocomplete]="auto"
-            [formControl]="myControl"
-            (blur)="updateCategoryValue()"></textarea>
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of categories"
-              [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+<div class="homeCards">
+  <div class="notes-new-container">
+    <form class="card" [style.height]="cardHeight" name="noteForm" id="noteForm"
+      [formGroup]="noteForm"
+      (ngSubmit)="createNote()">
+      <div class="date-time-container">
+        <time class="date-time">
+          <span>{{year}}</span>
+          <span class="separator"></span>
+          <span>{{month}} / {{day}}</span>
+        </time>
       </div>
-      <button class="action" type="submit" [disabled]="noteForm.invalid">
-        Crear Nota
-      </button>
-      <br>
-      <section *ngIf="isLoading" class="dots-container">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </section>
-    </div>
-  </form>
+      <div class="content">
+        <div class="infos">
+          <mat-form-field class="title">
+            <mat-label>Titulo</mat-label>
+            <textarea matInput placeholder="Titulo"
+              (input)="autoResize($event, 'title') "
+              #titleTextarea
+              rows="1" formControlName="title"></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="description">
+            <mat-label>Contenido</mat-label>
+            <textarea matInput placeholder="Contenido de la nota"
+              (input)="autoResize($event, 'description')" #descriptionTextarea
+              rows="7" formControlName="content"></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="category">
+            <mat-label>Categoria</mat-label>
+            <textarea matInput placeholder="Categoría"
+              (input)="autoResize($event, 'category')"
+              #categoryTextarea
+              rows="1"
+              formControlName="category"
+              [matAutocomplete]="auto"
+              [formControl]="myControl"
+              (blur)="updateCategoryValue()"></textarea>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of categories"
+                [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <button class="action" type="submit" [disabled]="noteForm.invalid">
+          Crear Nota
+        </button>
+        <br>
+        <section *ngIf="isLoading" class="dots-container">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </section>
+      </div>
+    </form>
+  </div>
 </div>
