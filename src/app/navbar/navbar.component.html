@@ -1,19 +1,20 @@
 
+<div>
+  <div class="eaton mat-typography" style="overflow-x:hidden;" fxFlexFill
+    cdkScrollable>
+    <mat-toolbar color="primary" class="main-header mat-elevation-z4"
+      [class.hidden]="toggleSearch">
+      <mat-toolbar-row style="padding: 0 5px;">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div style="padding:8px 0 0 10px; flex:1;">
+          <div class="mat-title" style="margin-bottom:2px;">Sticky-Notes</div>
+          <div class="mat-subheading-2" style="line-height:.6rem;">Ordena Tus
+            notas</div>
 
-<div class="eaton mat-typography" style="overflow-x:hidden;" fxFlexFill
-  cdkScrollable>
-  <mat-toolbar color="primary" class="main-header mat-elevation-z4"
-    [class.hidden]="toggleSearch">
-    <mat-toolbar-row style="padding: 0 5px;">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <div style="padding:8px 0 0 10px; flex:1;">
-        <div class="mat-title" style="margin-bottom:2px;">Sticky-Notes</div>
-        <div class="mat-subheading-2" style="line-height:.6rem;">Ordena Tus
-          notas</div>
-      </div>
-      <!-- <button mat-icon-button (click)="openSearch()">
+        </div>
+        <!-- <button mat-icon-button (click)="openSearch()">
         <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none"
           xmlns="http://www.w3.org/2000/svg">
           <path
@@ -23,80 +24,86 @@
             stroke-linejoin="round" />
         </svg>
       </button> -->
-    </mat-toolbar-row>
-  </mat-toolbar>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
-  <mat-toolbar class="search-block mat-elevation-z4"
-    [class.active]="toggleSearch">
-    <mat-toolbar-row style="padding: 0 5px;">
-      <button class="search-icon" mat-icon-button disabled>
-        <mat-icon>search</mat-icon>
-      </button>
-      <input class="search-control" type="text" placeholder="Search"
-        [(ngModel)]="searchText" #searchbar>
-      <button mat-button (click)="searchClose()">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
+    <mat-toolbar class="search-block mat-elevation-z4"
+      [class.active]="toggleSearch">
+      <mat-toolbar-row style="padding: 0 5px;">
+        <button class="search-icon" mat-icon-button disabled>
+          <mat-icon>search</mat-icon>
+        </button>
+        <input class="search-control" type="text" placeholder="Search"
+          [(ngModel)]="searchText" #searchbar>
+        <button mat-button (click)="searchClose()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
-  <mat-sidenav-container fxFlexFill style="position: relative;" fxFlexFill>
+    <mat-sidenav-container fxFlexFill>
 
-    <mat-sidenav #sidenav>
-      <mat-nav-list *ngIf="!isLoggedIn" class="nav-list">
-        <!-- Mostrar cuando el usuario no está logueado -->
-        <div class="card">
-          <div class="img">
-            <svg id="mySvg" width="800px" height="800px"
-              viewBox="0 0 24.00 24.00"
-              fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
-              <g id="SVGRepo_iconCarrier"> <circle cx="12" cy="9" r="3"
-                  stroke="#ffffff" stroke-width="1.5" /> <path
-                  d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20"
-                  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" />
-                <path
-                  d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
-                  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" />
-              </g>
+      <mat-sidenav #sidenav style="position: fixed;">
+        <mat-nav-list *ngIf="!isLoggedIn" class="nav-list">
+          <!-- Mostrar cuando el usuario no está logueado -->
+          <div class="card">
+            <div class="img">
+              <svg id="mySvg" width="800px" height="800px"
+                viewBox="0 0 24.00 24.00"
+                fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
+                <g id="SVGRepo_iconCarrier"> <circle cx="12" cy="9" r="3"
+                    stroke="#ffffff" stroke-width="1.5" /> <path
+                    d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20"
+                    stroke="#ffffff" stroke-width="1.5"
+                    stroke-linecap="round" />
+                  <path
+                    d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                    stroke="#ffffff" stroke-width="1.5"
+                    stroke-linecap="round" />
+                </g>
 
-            </svg>
+              </svg>
+            </div>
+            <span class="heading">Invitado</span>
+            <p>
+              <span class="heading"></span>
+            </p>
           </div>
-          <span class="heading">Invitado</span>
-          <p>
-            <span class="heading"></span>
-          </p>
-        </div>
 
-        <a mat-list-item (click)="navigateTo('/signup')">Registro</a>
-        <a mat-list-item (click)="navigateTo('/login')">Iniciar Sesión</a>
+          <a mat-list-item (click)="navigateTo('/signup')">Registro</a>
+          <a mat-list-item (click)="navigateTo('/login')">Iniciar Sesión</a>
 
-      </mat-nav-list>
-
-      <mat-nav-list *ngIf="isLoggedIn" class="nav-list">
-        <!-- Mostrar cuando el usuario está logueado -->
-        <div class="card">
-          <div class="img">
-            <svg id="mySvg" width="800px" height="800px"
-              viewBox="0 0 24.00 24.00"
-              fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
-              <g id="SVGRepo_iconCarrier"> <circle cx="12" cy="9" r="3"
-                  stroke="#ffffff" stroke-width="1.5" /> <path
-                  d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20"
-                  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" />
-                <path
-                  d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
-                  stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" />
-              </g>
-            </svg>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="isLoggedIn" class="nav-list">
+          <!-- Mostrar cuando el usuario está logueado -->
+          <div class="card">
+            <div class="img">
+              <svg id="mySvg" width="800px" height="800px"
+                viewBox="0 0 24.00 24.00"
+                fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000">
+                <g id="SVGRepo_iconCarrier"> <circle cx="12" cy="9" r="3"
+                    stroke="#ffffff" stroke-width="1.5" /> <path
+                    d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20"
+                    stroke="#ffffff" stroke-width="1.5"
+                    stroke-linecap="round" />
+                  <path
+                    d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                    stroke="#ffffff" stroke-width="1.5"
+                    stroke-linecap="round" />
+                </g>
+              </svg>
+            </div>
+            <span class="heading">{{userName}}</span>
+            <p>
+              <span class="heading">{{userEmail}}</span>
+            </p>
           </div>
-          <span class="heading">{{userName}}</span>
-          <p>
-            <span class="heading">{{userEmail}}</span>
-          </p>
-        </div>
-        <a mat-list-item (click)="logOut()">Cerrar Sesión</a>
+          <a mat-list-item (click)="logOut()">Cerrar Sesión</a>
 
-      </mat-nav-list>
-    </mat-sidenav>
-    <router-outlet></router-outlet>
-  </mat-sidenav-container>
+        </mat-nav-list>
+      </mat-sidenav>
+      <div style="position: relative">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-container>
+  </div>

@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
   contactForm: FormGroup;
-
+  showPassword: boolean = false;
+  isLoading: boolean = false;
 
 
   constructor(
@@ -63,6 +64,7 @@ export class SignupComponent {
     }
   }
   onSubmit() {
+    this.isLoading = true
     const userData = {
       userName: this.contactForm.get('fullName')?.value,
       email: this.contactForm.get('email')?.value,
@@ -88,6 +90,10 @@ export class SignupComponent {
         console.error('Error durante el registro:', error);
       }
     )
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
   navigateTo(route: string): void {
     this.router.navigate([route]);

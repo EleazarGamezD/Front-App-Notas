@@ -1,11 +1,10 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit, Injectable } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotesService } from '../service/notes.service';
 
 import Swal from 'sweetalert2';
-import { Category } from '../interface/category.interface';
-import { Observable, map, startWith } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-notes-new',
@@ -19,7 +18,8 @@ export class NotesNewComponent implements OnInit {
   month: string = '';
   day: string = '';
   noteForm: FormGroup;
-  cardHeight: string = 'auto';   // establecemos la altura de la tarjeta
+  cardHeight: string = 'auto';
+  isLoading: boolean = false;
   @ViewChild('titleTextarea')
   titleTextarea!: ElementRef; //leemos el elemneto title
   @ViewChild('descriptionTextarea')
@@ -27,6 +27,7 @@ export class NotesNewComponent implements OnInit {
   @ViewChild('categoryTextarea')
   categoryTextarea!: ElementRef;  //leemos el elemneto category
   constructor(
+    private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private router: Router,
     private notesService: NotesService
@@ -45,16 +46,24 @@ export class NotesNewComponent implements OnInit {
   }
 
   createNote() {
+    this.isLoading = true;
     if (this.noteForm.valid) {
       const formData = this.noteForm.value;
       this.notesService.newNote(formData).subscribe(
         response => {
           console.log('Server response:', response);
-          Swal.fire({
+          const msg = `Nota ${formData.title} creada con exito, Gracias!`;
+          const type = 'success';
+          this._snackBar.open(msg, type, {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+            duration: 3000
+          });
+          /* Swal.fire({
             icon: 'success',
             title: 'notification',
             text: `Nota ${formData.title} creada con exito, Gracias!`,
-          });
+          }); */
           //redirigir
           setTimeout(() => {
             this.goBack()
@@ -63,11 +72,18 @@ export class NotesNewComponent implements OnInit {
         },
         error => {
           console.error('Error creando la nota:', error);
-          Swal.fire({
+          const msg = `Error al crear la nota, intenta de nuevo`;
+          const type = 'error';
+          this._snackBar.open(msg, type, {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+            duration: 3000
+          });
+          /* Swal.fire({
             icon: 'error',
             title: 'Error',
             text: 'Error al crear la nota',
-          });
+          }); */
         }
       );
     }

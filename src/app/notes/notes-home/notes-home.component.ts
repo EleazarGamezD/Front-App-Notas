@@ -21,6 +21,7 @@ export class NotesHomeComponent implements OnInit {
   isLoading: boolean = true;
   noActiveNotes: boolean = false;
   noInactiveNotes: boolean = false;
+  archivedFunction: boolean = false;
   cardHeight: string = 'auto';   // establecemos la altura de la tarjeta
   @ViewChild('titleTextarea')
   titleTextarea!: ElementRef; //leemos el elemneto title
@@ -130,7 +131,7 @@ export class NotesHomeComponent implements OnInit {
   }
 
   archiveBtnFunction(note: Note) {
-
+    this.archivedFunction = true;
     const noteTitle = note.title
     const noteId = note.id
     if (note.isActive === true) {
@@ -142,6 +143,7 @@ export class NotesHomeComponent implements OnInit {
           title: `Notificación`,
           text: `nota ${noteTitle} Archivada con Éxito`,
         });
+        this.archivedFunction = false
         this.getNotes()
       })
 
@@ -154,6 +156,7 @@ export class NotesHomeComponent implements OnInit {
           title: 'Notificación',
           text: `Nota ${noteTitle}Activada con Éxito`,
         });
+        this.archivedFunction = false
         this.getNotes()
       })
     }

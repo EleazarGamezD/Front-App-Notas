@@ -31,7 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { NotesDetailsComponent } from './notes/notes-details/notes-details.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -66,6 +66,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatAutocompleteModule,
     MatDialogModule,
+    MatSnackBarModule,
 
 
   ],

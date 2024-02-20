@@ -18,6 +18,14 @@
 
 }
 
+.homeCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 0px 200px 100px 200px;
+}
+
 .card {
   box-sizing: border-box;
   display: flex;
@@ -420,4 +428,34 @@ p.label {
 .card1-template:hover h3 {
   transition: all 0.3s ease-out;
   color: #fff;
+}
+
+/* archive loading template */
+.loaderArchived {
+  width: 40px;
+  aspect-ratio: 4;
+  background: radial-gradient(circle closest-side, #000 90%, #0000) 0 / calc(100% / 3) 100% space;
+  clip-path: inset(0 100% 0 0);
+  animation: l1 1s steps(4) infinite;
+}
+
+@keyframes l1 {
+  to {
+    clip-path: inset(0 -34% 0 0);
+  }
+}
+
+/* Responsive zone  */
+
+@media screen and (min-width: 1440px) and (max-width: 2560px) {
+
+  .homeCards {
+    height: 1090px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 0px 400px 100px 400px;
+  }
+
 }

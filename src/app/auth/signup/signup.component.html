@@ -32,8 +32,9 @@
       </div>
       <div class="input-container">
         <input placeholder="Ingresa tu Clave" type="password"
+          type="{{ showPassword ? 'text' : 'password' }}"
           formControlName="password" autocomplete="new-password">
-        <span>
+        <span (click)="toggleShowPassword()">
           <svg stroke="currentColor" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2"
@@ -47,8 +48,9 @@
       </div>
       <div class="input-container">
         <input placeholder="Confirma tu Clave" type="password"
+          type="{{ showPassword ? 'text' : 'password' }}"
           formControlName="confirmPassword" autocomplete="new-password">
-        <span>
+        <span (click)="toggleShowPassword()">
           <svg stroke="currentColor" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2"
@@ -75,6 +77,13 @@
       <button class="submit" type="submit" [disabled]="contactForm.invalid">
         Crear
       </button>
+      <section *ngIf="isLoading" class="dots-container">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </section>
     </form>
   </form>
 </div>

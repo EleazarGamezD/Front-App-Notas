@@ -35,6 +35,13 @@
       <button class="submit" type="submit" [disabled]="loginForm.invalid">
         INICIAR SESIÓN
       </button>
+      <section *ngIf="isLoading" class="dots-container">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </section>
     </form>
   </form>
 </div>

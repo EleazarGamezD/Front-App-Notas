@@ -94,6 +94,14 @@
       <button class="action" type="submit" [disabled]="noteForm.invalid">
         Crear Nota
       </button>
+      <br>
+      <section *ngIf="isLoading" class="dots-container">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </section>
     </div>
   </form>
 </div>

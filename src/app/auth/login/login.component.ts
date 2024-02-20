@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
   showPassword: boolean = false;
-
+  isLoading: boolean = false;
 
 
   constructor(
@@ -34,6 +34,7 @@ export class LoginComponent {
   }
   onSubmit() {
     this.authService.logout()
+    this.isLoading = true
     const userData = {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value
