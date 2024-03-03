@@ -52,10 +52,12 @@ export class LoginComponent {
           this.navigateTo('/allnote');
           this.loginForm.reset();
         } else {
+          this.isLoading = false
           Swal.fire({
             icon: 'error',
             title: 'Error',
             text: `Usuario y/o contraseña invalida.`,
+
           });
         }
       }, error => {

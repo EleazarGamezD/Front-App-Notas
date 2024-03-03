@@ -82,6 +82,7 @@ export class SignupComponent {
         this.navigateTo('/allnote');
       },
       error => {
+        this.isLoading = false
         Swal.fire({
           icon: 'error',
           title: 'Error',
