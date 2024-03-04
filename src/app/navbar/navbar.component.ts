@@ -2,7 +2,9 @@ import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@an
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
 import { StateService } from '../auth/service/state.service';
-
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ThemeService } from './service/theme.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -16,7 +18,21 @@ export class NavbarComponent implements OnInit {
     private stateService: StateService,
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
+    public themeService: ThemeService
+
+  ) {
+    this.matIconRegistry.addSvgIcon(
+      'light-theme',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('ruta-del-icono-light.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'dark-theme',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('ruta-del-icono-dark.svg')
+    );
+  }
 
 
   ngOnInit(): void {
@@ -60,4 +76,10 @@ export class NavbarComponent implements OnInit {
     this.searchText = '';
     this.toggleSearch = false;
   }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
+
 }

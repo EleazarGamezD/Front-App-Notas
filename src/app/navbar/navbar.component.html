@@ -10,8 +10,8 @@
         </button>
         <div style="padding:8px 0 0 10px; flex:1;">
           <div class="mat-title" style="margin-bottom:2px;">Sticky-Notes</div>
-          <div class="mat-subheading-2" style="line-height:.6rem;">Ordena Tus
-            notas</div>
+          <div class="mat-subheading-2"
+            style="line-height:.6rem;"><!-- si algun dia quiero substitulo --></div>
 
         </div>
         <!-- <button mat-icon-button (click)="openSearch()">
@@ -23,7 +23,10 @@
             stroke="#ffffff" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
         </svg>
-      </button> -->
+      </button> --><button mat-icon-button (click)="toggleTheme()">
+          <mat-icon
+            [svgIcon]="themeService.isDarkTheme() ? 'light-theme' : 'dark-theme'"></mat-icon>
+        </button>
       </mat-toolbar-row>
     </mat-toolbar>
 
@@ -42,7 +45,6 @@
     </mat-toolbar>
 
     <mat-sidenav-container fxFlexFill>
-
       <mat-sidenav #sidenav style="position: fixed;">
         <mat-nav-list *ngIf="!isLoggedIn" class="nav-list">
           <!-- Mostrar cuando el usuario no está logueado -->
@@ -61,7 +63,6 @@
                     stroke="#ffffff" stroke-width="1.5"
                     stroke-linecap="round" />
                 </g>
-
               </svg>
             </div>
             <span class="heading">Invitado</span>

@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../auth/service/state.service';
+/* import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'node_modules/jquery/dist/jquery.min.js';
+import 'node_modules/@popperjs/core/dist/umd/popper.min.js';
+import 'node_modules/bootstrap/dist/js/bootstrap.min.js'; */
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: [
+    './home.component.scss']
 })
 export class HomeComponent implements OnInit {
   year: number;

@@ -131,3 +131,8 @@
     box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
   }
 }
+
+.final-message {
+  text-align: center;
+
+}
